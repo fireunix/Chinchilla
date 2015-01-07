@@ -1,0 +1,16 @@
+Options +FollowSymLinks
+Options -Indexes
+DirectoryIndex index.php index.html
+AddDefaultCharset UTF-8
+
+php_value post_max_size 32M
+php_value upload_max_filesize 32M
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteBase /
+RewriteCond $1 !^(dpe\.php|uploads|robots\.txt|favicon\.ico)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.php/$1 [L,QSA] 
+</IfModule>
